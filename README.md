@@ -2,11 +2,14 @@
 BashScript a very lightweight language for scripting.
 
 
-```JavaScript
-import bs from 'bashscript';
-const {ls} = bs.os;
+## Promise API
 
-ls('-lh', '/usr');
+```JavaScript
+
+import bs from 'bashscript';
+
+const {ls} = bs.promises;
+const {error, stdout, stderr} = await ls('-lh', '/usr');
 
 ```
 
@@ -24,5 +27,21 @@ dr-xr-xr-x.   2 root root  24K May 23 10:34 sbin
 drwxr-xr-x. 338 root root  12K May 21 13:26 share
 drwxr-xr-x.   4 root root 4.0K Jan 26 01:05 src
 lrwxrwxrwx.   1 root root   10 Jan 26 01:05 tmp -> ../var/tmp
+
+```
+
+## Stream API
+
+```JavaScript
+
+import bs from 'bashscript';
+
+const {ps, grep, tr} = bs.streams;
+
+const {error, stdout, stderr} = await bs.pipe(
+  ps('ax'),
+  grep('node'),
+  tr('[a-z]','[A-Z]')
+);
 
 ```
