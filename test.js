@@ -21,3 +21,7 @@ const result = await bs.pipe(
 console.log(result.read().toString());
 
 console.log((await bs.pipe(cat('package.json'), grep('name'))).read().toString());
+
+console.log( await bs.stringify( cat('package.json'), grep('name') ) );
+
+console.log( await bs( cat('package.json'), grep('name') ) );

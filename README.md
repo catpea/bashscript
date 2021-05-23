@@ -1,6 +1,16 @@
 # BashScript
 BashScript a very lightweight language meant for Bash scripting.
 
+## Theory Of Operation
+
+```JavaScript
+
+import bs from 'bashscript'
+const {cat, grep} = bs.os;
+await bs( cat('package.json'), grep('name') ) // "name": "bashscript",
+
+```
+
 ## Promise API
 
 ```JavaScript
