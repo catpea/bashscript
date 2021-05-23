@@ -1,7 +1,7 @@
 {
-  "type":"module",
+  "type": "module",
   "name": "bashscript",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "BashScript a very lightweight language for scripting.",
   "main": "index.js",
   "scripts": {
