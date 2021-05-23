@@ -9,7 +9,7 @@ const os = new Proxy({}, {
 function command(name, args){
   const ls = spawn(name, args);
   ls.stdout.on("data", data => {
-      console.log(`stdout: ${data}`);
+      console.log(data);
   });
 }
 

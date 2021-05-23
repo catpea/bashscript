@@ -14,7 +14,7 @@ const {error, stdout, stderr} = await ls('-lh', '/usr');
 ```
 
 ```shell
-stdout: total 392K
+total 392K
 dr-xr-xr-x.   2 root root  68K May 23 10:34 bin
 drwxr-xr-x.   2 root root 4.0K Jan 26 01:05 games
 drwxr-xr-x.  69 root root 4.0K May 15 14:05 include
