@@ -35,7 +35,7 @@ pipeline(
 ```JavaScript
 #!/usr/bin/env node
 import { pipeline } from 'stream';
-import bs from './index.js'
+import bs from 'bashscript'
 const {ls, tr} = bs.os;
 
 pipeline(
