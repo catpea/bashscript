@@ -1,47 +1,68 @@
 # BashScript
-BashScript a very lightweight language for scripting.
-
-
-## Promise API
+BashScript a very lightweight language meant for Bash scripting.
 
 ```JavaScript
 
-import bs from 'bashscript';
+#!/usr/bin/env node
 
-const {ls} = bs.promises;
-const {error, stdout, stderr} = await ls('-lh', '/usr');
+import { pipeline } from 'stream';
+import bs from 'bashscript'
+const {ps, grep, tr, echo} = bs.os;
+
+pipeline(
+  ps('a'),
+  grep(' bash'),
+  tr('"[a-z]"', '"[A-Z]"'),
+  err => console.error
+).once('readable', function () {
+  console.log( this.read().toString())
+})
 
 ```
 
 ```shell
-total 392K
-dr-xr-xr-x.   2 root root  68K May 23 10:34 bin
-drwxr-xr-x.   2 root root 4.0K Jan 26 01:05 games
-drwxr-xr-x.  69 root root 4.0K May 15 14:05 include
-dr-xr-xr-x.  66 root root  36K May 23 10:34 lib
-dr-xr-xr-x. 195 root root 204K May 23 10:34 lib64
-drwxr-xr-x.  56 root root  16K May 23 10:34 libexec
-drwxr-xr-x.  12 root root 4.0K Jan 26 01:05 local
-drwxr-xr-x.   5 root root 4.0K Oct  8  2020 pgsql-13
-dr-xr-xr-x.   2 root root  24K May 23 10:34 sbin
-drwxr-xr-x. 338 root root  12K May 21 13:26 share
-drwxr-xr-x.   4 root root 4.0K Jan 26 01:05 src
-lrwxrwxrwx.   1 root root   10 Jan 26 01:05 tmp -> ../var/tmp
+3421 PTS/0    SS     0:00 BASH
+3671 PTS/1    SS+    0:00 BASH
+3982 PTS/2    SS+    0:00 BASH
+5922 PTS/3    SS     0:00 BASH
+40234 PTS/4    SS+    0:00 BASH
+41162 PTS/5    SS     0:00 BASH
+45526 PTS/6    SS+    0:00 BASH
+46480 PTS/7    SS     0:00 BASH
 
 ```
 
-## Stream API
-
 ```JavaScript
+#!/usr/bin/env node
+import { pipeline } from 'stream';
+import bs from './index.js'
+const {ls, tr} = bs.os;
 
-import bs from 'bashscript';
+pipeline(
+  ls('-lh', '/usr'),
+  tr('"[a-z]"', '"[A-Z]"'),
+  err => console.error
+).once('readable', function () {
+  console.log( this.read().toString())
+})
 
-const {ps, grep, tr} = bs.streams;
 
-const {error, stdout, stderr} = await bs.pipe(
-  ps('ax'),
-  grep('node'),
-  tr('[a-z]','[A-Z]')
-);
+```
+
+```shell
+TOTAL 392K
+DR-XR-XR-X.   2 ROOT ROOT  68K MAY 23 10:34 BIN
+DRWXR-XR-X.   2 ROOT ROOT 4.0K JAN 26 01:05 GAMES
+DRWXR-XR-X.  69 ROOT ROOT 4.0K MAY 15 14:05 INCLUDE
+DR-XR-XR-X.  66 ROOT ROOT  36K MAY 23 10:34 LIB
+DR-XR-XR-X. 195 ROOT ROOT 204K MAY 23 10:34 LIB64
+DRWXR-XR-X.  56 ROOT ROOT  16K MAY 23 10:34 LIBEXEC
+DRWXR-XR-X.  12 ROOT ROOT 4.0K JAN 26 01:05 LOCAL
+DRWXR-XR-X.   5 ROOT ROOT 4.0K OCT  8  2020 PGSQL-13
+DR-XR-XR-X.   2 ROOT ROOT  24K MAY 23 10:34 SBIN
+DRWXR-XR-X. 338 ROOT ROOT  12K MAY 21 13:26 SHARE
+DRWXR-XR-X.   4 ROOT ROOT 4.0K JAN 26 01:05 SRC
+LRWXRWXRWX.   1 ROOT ROOT   10 JAN 26 01:05 TMP -> ../VAR/TMP
+
 
 ```

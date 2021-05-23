@@ -1,13 +1,13 @@
 #!/usr/bin/env node
-
+import { pipeline } from 'stream';
 import bs from './index.js'
+const {ps, grep, tr, echo} = bs.os;
 
-console.log(bs.os.moo);
-
-const {echo, cat, tar, foo, zip} = bs.os;
-
-console.log(echo("bork"));
-
-const {ls} = bs.os;
-
-console.log( ls('-lh', '/usr') );
+pipeline(
+  ps('a'),
+  grep(' bash'),
+  tr('"[a-z]"', '"[A-Z]"'),
+  err => console.error
+).once('readable', function () {
+  console.log( this.read().toString())
+})

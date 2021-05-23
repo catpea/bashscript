@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/catpea/bashscript/issues"
   },
-  "homepage": "https://github.com/catpea/bashscript#readme"
+  "homepage": "https://github.com/catpea/bashscript#readme",
+  "dependencies": {
+    "duplex-child-process": "^1.0.1"
+  }
 }
