@@ -5,6 +5,9 @@ BashScript a very lightweight language meant for Bash scripting.
 
 ```JavaScript
 
+import bs from 'bashscript'
+const {ps, grep, tr} = bs.os;
+
 const result = await bs.pipe(
   ps('a'),
   grep(' bash'),
