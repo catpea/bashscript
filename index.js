@@ -1,6 +1,6 @@
 import { spawn } from "child_process";
 
-const load = new Proxy({}, {
+const os = new Proxy({}, {
     get: function get(target, prop) {
       if (typeof prop == 'string') return (...args) => command(prop, args);
     }
@@ -13,5 +13,5 @@ function command(name, args){
   });
 }
 
-const bs = {load};
+const bs = {os};
 export default bs;

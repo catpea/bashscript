@@ -2,12 +2,12 @@
 
 import bs from './index.js'
 
-console.log(bs.load.moo);
+console.log(bs.os.moo);
 
-const {echo, cat, tar, foo, zip} = bs.load;
+const {echo, cat, tar, foo, zip} = bs.os;
 
 console.log(echo("bork"));
 
-const {ls} = bs.load;
+const {ls} = bs.os;
 
 console.log( ls('-lh', '/usr') );

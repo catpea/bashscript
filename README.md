@@ -3,10 +3,10 @@ BashScript a very lightweight language for scripting.
 
 
 ```JavaScript
+import bs from 'bashscript';
+const {ls} = bs.os;
 
-const {ls} = bs.load;
-
-console.log( ls('-lh', '/usr') );
+ls('-lh', '/usr');
 
 ```
 
