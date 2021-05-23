@@ -1,6 +1,34 @@
 # BashScript
 BashScript a very lightweight language meant for Bash scripting.
 
+## Promise API
+
+```JavaScript
+
+const result = await bs.pipe(
+  ps('a'),
+  grep(' bash'),
+  tr('"[a-z]"', '"[A-Z]"')
+);
+
+console.log(result.read().toString());
+
+```
+
+```shell
+3421 PTS/0    SS     0:00 BASH
+3671 PTS/1    SS+    0:00 BASH
+3982 PTS/2    SS+    0:00 BASH
+5922 PTS/3    SS     0:00 BASH
+40234 PTS/4    SS+    0:00 BASH
+41162 PTS/5    SS     0:00 BASH
+45526 PTS/6    SS+    0:00 BASH
+46480 PTS/7    SS     0:00 BASH
+
+```
+
+## Using Node's Pipeline
+
 ```JavaScript
 
 #!/usr/bin/env node

@@ -18,4 +18,5 @@ const result = await bs.pipe(
   grep(' bash'),
   tr('"[a-z]"', '"[A-Z]"')
 );
+
 console.log(result.read().toString());
