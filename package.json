@@ -1,0 +1,22 @@
+{
+  "type":"module",
+  "name": "bashscript",
+  "version": "1.0.0",
+  "description": "BashScript a very lightweight language for scripting.",
+  "main": "index.js",
+  "scripts": {
+    "save": "git add .; git commit -m 'New Release'; git push; npm version patch; npm publish; git push;",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/catpea/bashscript.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/catpea/bashscript/issues"
+  },
+  "homepage": "https://github.com/catpea/bashscript#readme"
+}
