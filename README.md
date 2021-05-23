@@ -4,6 +4,12 @@ BashScript a very lightweight language meant for Bash scripting.
 ## Promise API
 
 ```JavaScript
+import bs from 'bashscript'
+const {cat, grep} = bs.os;
+(await bs.pipe(cat('package.json'), grep('name'))).read().toString() // "name": "bashscript",
+```
+
+```JavaScript
 
 import bs from 'bashscript'
 const {ps, grep, tr} = bs.os;
