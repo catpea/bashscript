@@ -1,9 +1,10 @@
 # BashScript
 A small shell and a very lightweight JavaScript library meant to convert Operating System commands to functions.
 
-```bash, verb: strike hard and violently```
+- bash, verb: strike hard and violently
+- Not related to Bash the GNU Project's shell (the Bourne Again SHell), this is a JavaScript library.
 
-* Not related to Bash the GNU Project's shell (the Bourne Again SHell), this is a JavaScript library.
+# History
 
 Need for OS command integration arose from development of https://catpea.com,
 I was unable to locate small enough solutions that worked well for me.
@@ -16,6 +17,54 @@ you should follow all node conventions, and create proper node modules that you 
 
 A repl shell is available.
 If you install BashScript with ```npm i -g bashscript``` then run ```bssh``` to enter the shell.
+
+## Using The Shell
+
+```JavaScript
+> const {cat, grep} = cmd; // import commands
+> await exe( cat('package.json'), grep('name') ); // execute a pipe
+```
+
+```shell
+  "name": "bashscript",
+```
+
+```JavaScript
+> const {cat} = cmd; await exe( cat('package.json') );
+
+```
+
+```shell
+{
+  "author": "Cat Pea <corporate.miou@gmail.com> (https://catpea.com/)",
+  "type": "module",
+  "name": "bashscript",
+  "version": "1.0.17",
+  "description": "A small shell and a very lightweight JavaScript library meant to convert Operating System commands to functions.",
+  "main": "index.js",
+  "bin": {
+    "bssh": "./repl.js"
+  },
+  "scripts": {
+    "save": "git add .; git commit -m 'New Release'; git push; npm version patch; npm publish; git push;",
+    "test": "./test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/catpea/bashscript.git"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/catpea/bashscript/issues"
+  },
+  "homepage": "https://github.com/catpea/bashscript#readme",
+  "dependencies": {
+    "cli-highlight": "^2.1.11",
+    "munchhausen": "^1.0.10"
+  }
+}
+```
 
 ## Theory Of Operation
 
