@@ -1,27 +1,7 @@
 #!/usr/bin/env node
-import { pipeline } from 'stream';
+import assert from 'assert';
 import bs from './index.js'
-const {ps, grep, tr, echo, cat} = bs.os;
-
-pipeline(
-  ps('a'),
-  grep(' bash'),
-  tr('"[a-z]"', '"[A-Z]"'),
-  err => console.error
-).once('readable', function () {
-  console.log( this.read().toString())
-})
-
-
-const result = await bs.pipe(
-  ps('a'),
-  grep(' bash'),
-  tr('"[a-z]"', '"[A-Z]"')
-);
-console.log(result.read().toString());
-
-console.log((await bs.pipe(cat('package.json'), grep('name'))).read().toString());
-
-console.log( await bs.stringify( cat('package.json'), grep('name') ) );
-
-console.log( await bs( cat('package.json'), grep('name') ) );
+const {cat, grep} = bs.os;
+const actual = await bs(cat('package.json'), grep('name'));
+const expected = `  "name": "bashscript",\n`;
+assert.equal(actual,expected);
