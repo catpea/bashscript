@@ -2,7 +2,7 @@
   "author": "Cat Pea <corporate.miou@gmail.com> (https://catpea.com/)",
   "type": "module",
   "name": "bashscript",
-  "version": "1.0.20",
+  "version": "1.0.21",
   "description": "A small shell and a very lightweight JavaScript library meant to convert Operating System commands to functions.",
   "main": "index.js",
   "bin": {
