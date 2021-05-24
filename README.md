@@ -1,7 +1,7 @@
 # BashScript
 A small shell and a very lightweight JavaScript library meant to convert Operating System commands to functions.
 
-```bash, verb: strike hard and violently``` (* Not related to Bash Shell)
+```bash, verb: strike hard and violently``` (* Not related to Bash the GNU Project's shell (the Bourne Again SHell) this is a java script library.)
 
 Need for OS command integration arose from development of https://catpea.com,
 I was unable to locate small enough solutions that worked well for me.
