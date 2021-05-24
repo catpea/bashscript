@@ -20,7 +20,10 @@ If you install BashScript with ```npm i -g bashscript``` then run ```bssh``` to 
 
 ## Using The Shell
 
+### Basic Usage
+
 ```JavaScript
+$ bssh # enter shell
 > process.title
 node
 > process.uptime()
@@ -28,16 +31,10 @@ node
 >
 ```
 
-```JavaScript
-> const {cat, grep} = cmd; // import commands
-> await exe( cat('package.json'), grep('name') ); // execute a pipe
-```
-
-```shell
-  "name": "bashscript",
-```
+### Execute A Simple Command
 
 ```JavaScript
+$ bssh # enter shell
 > const {cat} = cmd; await exe( cat('package.json') );
 
 ```
@@ -73,6 +70,26 @@ node
   }
 }
 ```
+
+### Execute A Simple Command Simply (use cmd.command)
+
+```JavaScript
+$ bssh # enter shell
+> await exe( cmd.cat('package.json') );
+
+```
+
+### Pipe Two Commands Together
+
+```JavaScript
+> const {cat, grep} = cmd; // import commands
+> await exe( cat('package.json'), grep('name') ); // execute a pipe
+```
+
+```shell
+  "name": "bashscript",
+```
+
 
 ## Theory Of Operation
 
@@ -184,5 +201,16 @@ DRWXR-XR-X. 338 ROOT ROOT  12K MAY 21 13:26 SHARE
 DRWXR-XR-X.   4 ROOT ROOT 4.0K JAN 26 01:05 SRC
 LRWXRWXRWX.   1 ROOT ROOT   10 JAN 26 01:05 TMP -> ../VAR/TMP
 
+
+```
+
+
+## Complex Shell Example (A Mini Tutorial)
+
+How to execute the following Bash command:
+
+```shell
+
+dirname $(readlink -f $(which bssh))
 
 ```
