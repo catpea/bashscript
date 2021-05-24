@@ -39,7 +39,7 @@ $ bssh # enter shell
 
 ```
 
-```shell
+```JavaScript
 {
   "author": "Cat Pea <corporate.miou@gmail.com> (https://catpea.com/)",
   "type": "module",
@@ -77,6 +77,20 @@ $ bssh # enter shell
 $ bssh # enter shell
 > await exe( cmd.cat('package.json') );
 
+```
+
+```JavaScript
+{
+  "author": "Cat Pea <corporate.miou@gmail.com> (https://catpea.com/)",
+  "type": "module",
+  "name": "bashscript",
+  // ... //
+  "homepage": "https://github.com/catpea/bashscript#readme",
+  "dependencies": {
+    "cli-highlight": "^2.1.11",
+    "munchhausen": "^1.0.10"
+  }
+}
 ```
 
 ### Pipe Two Commands Together
