@@ -1,25 +1,29 @@
 {
+  "author": "Cat Pea <corporate.miou@gmail.com> (https://catpea.com/)",
   "type": "module",
   "name": "bashscript",
   "version": "1.0.12",
-  "description": "BashScript a very lightweight language for scripting.",
+  "description": "A small shell and a very lightweight JavaScript library meant to convert Operating System commands to functions.",
   "main": "index.js",
+  "bin": {
+    "bssh": "./repl.js"
+  },
   "scripts": {
     "save": "git add .; git commit -m 'New Release'; git push; npm version patch; npm publish; git push;",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./test.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/catpea/bashscript.git"
   },
   "keywords": [],
-  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/catpea/bashscript/issues"
   },
   "homepage": "https://github.com/catpea/bashscript#readme",
   "dependencies": {
-    "duplex-child-process": "^1.0.1"
+    "cli-highlight": "^2.1.11",
+    "munchhausen": "^1.0.10"
   }
 }

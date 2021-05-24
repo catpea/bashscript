@@ -1,5 +1,19 @@
 # BashScript
-BashScript a very lightweight language meant for Bash scripting.
+A small shell and a very lightweight JavaScript library meant to convert Operating System commands to functions.
+
+```bash, verb: strike hard and violently``` (* Not related to Bash Shell)
+
+Need for OS command integration arose from development of https://catpea.com,
+I was unable to locate small enough solutions that worked well for me.
+
+I came across [proxy-www](https://github.com/justjavac/proxy-www)
+and ended up creating [munchhausen](https://github.com/catpea/munchhausen).
+
+I do not like the idea of using bashscript with ```#!/usr/bin/env bashscript```,
+you should follow all node conventions, and create proper node modules that you install and maintain with npm.
+
+A repl shell is available.
+If you install BashScript with ```npm i -g bashscript``` then run ```bssh``` to enter the shell.
 
 ## Theory Of Operation
 
