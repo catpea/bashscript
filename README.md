@@ -21,6 +21,14 @@ If you install BashScript with ```npm i -g bashscript``` then run ```bssh``` to 
 ## Using The Shell
 
 ```JavaScript
+> process.title
+node
+> process.uptime()
+22.950190303
+>
+```
+
+```JavaScript
 > const {cat, grep} = cmd; // import commands
 > await exe( cat('package.json'), grep('name') ); // execute a pipe
 ```
