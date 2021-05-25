@@ -9,6 +9,11 @@ const r = repl.start({ prompt: '> ', xeval: myEval, writer: myWriter });
 
 r.context.cmd = bs.os;
 r.context.exe = bs;
+r.context.deep = function(...chain){
+
+  
+
+};
 
 function myEval(cmd, context, filename, callback) {
   // callback(null, myTranslator.translate(cmd));

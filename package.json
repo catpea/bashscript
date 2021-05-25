@@ -24,6 +24,6 @@
   "homepage": "https://github.com/catpea/bashscript#readme",
   "dependencies": {
     "cli-highlight": "^2.1.11",
-    "munchhausen": "^1.0.10"
+    "munchhausen": "^2.0.0"
   }
 }
