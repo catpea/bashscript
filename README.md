@@ -6,7 +6,7 @@ A small shell and a very lightweight JavaScript library meant to convert Operati
 
 # Warning
 
-This is a proof of concept system, the streams are not fully tested yet, and they may hand your terminal, so start a new terminal when getting into the repl shell.
+This is a proof of concept system, the streams are not fully tested yet, and they may hang your terminal, so start a new terminal when getting into the repl shell.
 
 # History
 
