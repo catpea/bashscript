@@ -128,7 +128,7 @@ dirname $(readlink -f $(which bssh))
 
 ```JavaScript
 > const {cat, printf, dirname, readlink, which, grep,} = cmd; // import commands for convenience
-> await exe( cat(printf("%s", dirname(readlink('-f', which('bssh'))), "/package.json" )), grep('name') ); // execute a pipe
+> await exe( cat(printf("%s", dirname(readlink('-f', which('http-server'))), "/package.json" )), grep('name') ); // execute a pipe
 ```
 
 ## Using The Script
