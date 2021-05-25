@@ -191,7 +191,7 @@ pipeline(
   ps('a'),
   grep(' bash'),
   tr('"[a-z]"', '"[A-Z]"'),
-  ])
+  ]),
   err => console.error
 ).once('readable', function () {
   console.log( this.read().toString())
