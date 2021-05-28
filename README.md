@@ -15,7 +15,7 @@ const result = await echo("Meow!").value();
 assert.equal(result, "Meow!");
 ```
 
-## Pipeline Example
+### Pipeline Example
 
 ```JavaScript
 const result = await pipeline(cat( printf("%s", dirname(readlink('-f', which('npm'))),"/../package.json" )), grep('name'), head('-n', 1) ).value();
