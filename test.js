@@ -1,13 +1,37 @@
-#!/usr/bin/env node
+#!/usr/bin/env -S node --trace-uncaught
+
 import assert from 'assert';
-import bs from './index.js'
-const { cat, grep, printf, dirname, readlink, which, } = bs.os;
+import { inspect } from 'util';
 
-const actual1 = await bs(cat('package.json'), grep('name'));
-const expected1 = `  "name": "bashscript",\n`;
-const actual2 = await bs( cat(printf("%s", dirname(readlink('-f', which('bssh'))), "/package.json" )), grep('name') )
-const expected2 = `  "name": "bashscript",\n`;
+import identify from './src/util/identify.js';
+import cast from './src/util/cast.js';
+import Util from './src/Util.js';
+import Node from './src/Node.js';
 
-assert.equal(actual1, expected1);
-assert.equal(actual2, expected2);
-assert.equal(actual1, actual2);
+import bug from 'debug';
+const debug = bug('tests');
+
+
+assert.equal(identify(new Util()), "Util", "identify.js is broken, because identiofication misidentified the thing.");
+//assert.equal(identify(cast({}, Util) ), "Util", "cast.js is broken, becasue casting returned unexpected type.");
+
+import { cmd } from './index.js';
+const { pipeline, cat, printf, dirname, readlink, which, grep, head, echo, tr } = cmd;
+
+{
+  const result = await echo("Meow!").value();
+  debug(result);
+  assert.equal(result, "Meow!");
+}
+
+{
+  const result = await pipeline(cat( printf("%s", dirname(readlink('-f', which('npm'))),"/../package.json" )), grep('name'), head('-n', 1) ).value();
+  debug(result);
+  assert.equal(result, '  "name": "npm",')
+}
+
+{
+  const result = await pipeline(cat(echo('package.json')),tr( '"[a-z]"', '"[A-Z]"'), grep('NAME') ).value();
+  debug(result);
+  assert.equal(result, '  "NAME": "BASHSCRIPT",')
+}

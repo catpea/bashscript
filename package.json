@@ -2,13 +2,14 @@
   "author": "Cat Pea <corporate.miou@gmail.com> (https://catpea.com/)",
   "type": "module",
   "name": "bashscript",
-  "version": "1.0.25",
+  "version": "2.0.0",
   "description": "A small shell and a very lightweight JavaScript library meant to convert Operating System commands to functions.",
   "main": "index.js",
   "bin": {
     "bssh": "./repl.js"
   },
   "scripts": {
+    "bork": "git add .; git commit -m 'New Release'; git push; npm publish; git push;",
     "save": "git add .; git commit -m 'New Release'; git push; npm version patch; npm publish; git push;",
     "test": "./test.js"
   },
@@ -23,7 +24,10 @@
   },
   "homepage": "https://github.com/catpea/bashscript#readme",
   "dependencies": {
-    "cli-highlight": "^2.1.11",
-    "munchhausen": "^2.0.0"
+    "debug": "^4.3.1",
+    "duplex-child-process": "^1.0.1",
+    "execa": "^5.0.0",
+    "invariant": "^2.2.4",
+    "pretty-error": "^3.0.3"
   }
 }
