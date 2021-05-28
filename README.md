@@ -22,5 +22,5 @@ const result = await pipeline(cat( printf("%s", dirname(readlink('-f', which('np
 assert.equal(result, '  "name": "npm",')
 ```
 
-# Namage
+## Namage
 Not related to Bash the GNU Project's shell (the Bourne Again SHell), this is a JavaScript library that automagically converts system commands to JavaScript functions (Think "bash, verb: strike hard and violently");
