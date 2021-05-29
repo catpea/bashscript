@@ -12,7 +12,6 @@ npm i -g bashscript # for the bssh REPL shell
 
 ```JavaScript
 import { bs } from './index.js';
-const { pipeline, cat, echo, tr, grep } = bs;
 const result = await bs.echo("Meow!").value();
 assert.equal(result, "Meow!");
 ```
