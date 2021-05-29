@@ -18,6 +18,11 @@ class Node extends Util {
       .map(node=>typeof node === 'string'?new Data(node):node) // Cast string to data.
       .map(node=>typeof node === 'number'?new Data(node):node) // Cast number to data.
       .map(node=>this.appendChild(node)); // Add
+
+
+
+
+
    }
 
   appendChild(node){
@@ -31,6 +36,10 @@ class Node extends Util {
 
     // Add node to children.
     this.#childNodes.push(node);
+  }
+
+  get exe(){
+    return this.value()
   }
 
   get children(){return this.#childNodes;}

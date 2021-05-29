@@ -1,6 +1,14 @@
 # bashscript
 A small REPL shell, and a very lightweight JavaScript library meant to convert Operating System commands to functions.
 
+## TLDR
+
+```JavaScript
+import { cmd } from 'bashscript';
+const result = await cmd.echo("Grr Grr Meow!").exe;
+assert.equal(result, "Grr Grr Meow!");
+```
+
 ## Installation
 
 ```JavaScript
@@ -57,14 +65,14 @@ Shell {}
 ## Usage
 
 ```JavaScript
-import { cmd, exe } from './index.js';
+import { cmd, exe } from 'bashscript';
 const { echo } = cmd;
 const result = await exe( echo("Meow!") );
 assert.equal(result, "Meow!");
 ```
 
 ```JavaScript
-import { cmd } from './index.js';
+import { cmd } from 'bashscript';
 const result = await cmd.echo("Meow!").value();
 assert.equal(result, "Meow!");
 ```
@@ -72,7 +80,7 @@ assert.equal(result, "Meow!");
 ### Pipeline Example
 
 ```JavaScript
-import { cmd } from './index.js';
+import { cmd } from 'bashscript';
 const { pipeline, cat, echo, tr, grep } = cmd;
 const result = await pipeline(
   cat( echo('package.json') ),
@@ -83,7 +91,7 @@ assert.equal(result, '  "NAME": "BASHSCRIPT",')
 ```
 
 ```JavaScript
-import { cmd } from './index.js';
+import { cmd } from 'bashscript';
 const { pipeline, cat, printf, dirname, readlink, which, grep, head } = cmd;
 const result = await exe( pipeline(
   cat(
@@ -105,9 +113,17 @@ assert.equal(result, '  "name": "npm",')
 ```
 
 ```JavaScript
-import { cmd } from './index.js';
+import { cmd } from 'bashscript';
 const { pipeline, cat, printf, dirname, readlink, which, grep, head } = cmd;
 const result = await pipeline( cat( printf( "%s", dirname( readlink( '-f', which('npm') ) ), "/../package.json" ) ), grep('name'), head('-n', 1) ).value();
+assert.equal(result, '  "name": "npm",')
+```
+
+```JavaScript
+import { cmd, pipeline } from 'bashscript'; // a pipeline helper can also be imported directly from the bashscript module.
+const { cat, printf, dirname, readlink, which, grep, head } = cmd;
+const result = await pipeline(cat( printf("%s", dirname(readlink('-f', which('npm'))),"/../package.json" )), grep('name'), head('-n', 1) ).value();
+debug(result);
 assert.equal(result, '  "name": "npm",')
 ```
 
