@@ -5,22 +5,29 @@ A small REPL shell, and a very lightweight JavaScript library meant to convert O
 
 ```JavaScript
 npm i bashscript
-npm i -g bashscript # for the bssh REPL shell
+npm i -g bashscript # for the cmdsh REPL shell
 ```
 
 ## Usage
 
 ```JavaScript
-import { bs } from './index.js';
-const result = await bs.echo("Meow!").value();
+import { cmd, exe } from './index.js';
+const result = await exe( echo("Meow!") );
+assert.equal(result, "Meow!");
+```
+
+```JavaScript
+import { cmd } from './index.js';
+const result = await exe( echo("Meow!") );
+const result = await cmd.echo("Meow!").value();
 assert.equal(result, "Meow!");
 ```
 
 ### Pipeline Example
 
 ```JavaScript
-import { bs } from './index.js';
-const { pipeline, cat, echo, tr, grep } = bs;
+import { cmd } from './index.js';
+const { pipeline, cat, echo, tr, grep } = cmd;
 const result = await pipeline(
   cat( echo('package.json') ),
   tr( '"[a-z]"', '"[A-Z]"'),
@@ -30,9 +37,9 @@ assert.equal(result, '  "NAME": "BASHSCRIPT",')
 ```
 
 ```JavaScript
-import { bs } from './index.js';
-const { pipeline, cat, printf, dirname, readlink, which, grep, head } = bs;
-const result = await pipeline(
+import { cmd } from './index.js';
+const { pipeline, cat, printf, dirname, readlink, which, grep, head } = cmd;
+const result = await exe( pipeline(
   cat(
     printf(
       "%s",
@@ -47,13 +54,13 @@ const result = await pipeline(
   ),
   grep('name'),
   head('-n', 1)
-).value();
+) );
 assert.equal(result, '  "name": "npm",')
 ```
 
 ```JavaScript
-import { bs } from './index.js';
-const { pipeline, cat, printf, dirname, readlink, which, grep, head } = bs;
+import { cmd } from './index.js';
+const { pipeline, cat, printf, dirname, readlink, which, grep, head } = cmd;
 const result = await pipeline( cat( printf( "%s", dirname( readlink( '-f', which('npm') ) ), "/../package.json" ) ), grep('name'), head('-n', 1) ).value();
 assert.equal(result, '  "name": "npm",')
 ```
