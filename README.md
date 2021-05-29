@@ -18,7 +18,6 @@ assert.equal(result, "Meow!");
 
 ```JavaScript
 import { cmd } from './index.js';
-const result = await exe( echo("Meow!") );
 const result = await cmd.echo("Meow!").value();
 assert.equal(result, "Meow!");
 ```
