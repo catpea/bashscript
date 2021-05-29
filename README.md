@@ -118,7 +118,6 @@ Not related to Bash the GNU Project's shell (the Bourne Again SHell), this is a 
 
 Need for OS command integration arose from development of https://catpea.com,
 I was unable to locate small enough solutions that worked well for me.
-
 I came across [proxy-www](https://github.com/justjavac/proxy-www)
-and ended up creating [munchhausen](https://github.com/catpea/munchhausen),
+and ended up creating [munchhausen](https://github.com/catpea/munchhausen)
 and later [bashscript](https://github.com/catpea/bashscript).
