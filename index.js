@@ -1,4 +1,3 @@
-import execa from 'execa';
 import invariant from 'invariant';
 import bug from 'debug';
 const debug = bug('main');
@@ -7,17 +6,15 @@ import Tree from './src/Tree.js';
 import Line from './src/Line.js';
 import Shell from './src/Shell.js';
 
-import PrettyError from 'pretty-error';
-
-function error(error){
-  var prettyError = new PrettyError();
-  var renderedError = prettyError.render(error);
-  console.error(renderedError);
-  process.exit(1); //mandatory (as per the Node.js docs)
-}
-
-process.on('unhandledRejection', error)
-process.on('uncaughtException', error);
+// import PrettyError from 'pretty-error';
+// function error(error){
+//   var prettyError = new PrettyError();
+//   var renderedError = prettyError.render(error);
+//   console.error(renderedError);
+//   process.exit(1); //mandatory (as per the Node.js docs)
+// }
+// process.on('unhandledRejection', error)
+// process.on('uncaughtException', error);
 
 const line = async function(...nodes){
   invariant(pipes.length, 'One or more commands are required, becasue a Line cannot be empty.');
