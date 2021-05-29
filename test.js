@@ -41,3 +41,11 @@ const { pipeline, cat, printf, dirname, readlink, which, grep, head, echo, tr } 
   debug(result);
   assert.equal(result, '  "name": "npm",')
 }
+
+{
+  import { pipeline } from './index.js';
+  //const { pipeline, cat, printf, dirname, readlink, which, grep, head } = cmd;
+  const result = await pipeline(cat( printf("%s", dirname(readlink('-f', which('npm'))),"/../package.json" )), grep('name'), head('-n', 1) ).value();
+  debug(result);
+  assert.equal(result, '  "name": "npm",')
+}
