@@ -5,8 +5,7 @@ A small REPL shell, and a very lightweight JavaScript library meant to convert O
 
 ```JavaScript
 import { cmd } from 'bashscript';
-const result = await cmd.echo("Grr Grr Meow!").exe;
-assert.equal(result, "Grr Grr Meow!");
+await cmd.echo("Grr Grr Meow!").exe; // Grr Grr Meow!
 ```
 
 ## Installation
