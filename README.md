@@ -5,7 +5,25 @@ A small REPL shell, and a very lightweight JavaScript library meant to convert O
 
 ```JavaScript
 npm i bashscript
-npm i -g bashscript # for the cmdsh REPL shell
+```
+
+## REPL Shell
+
+```JavaScript
+npm i -g bashscript # install bashscript REPL shell
+$ bashscript # enter shell
+> process.title
+node
+
+> process.uptime()
+22.950190303
+
+> cmd.echo('Meow!').value()
+Promise { <pending> }
+
+> await cmd.echo('Meow!').value()
+'Meow!'
+
 ```
 
 ## Usage

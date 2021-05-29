@@ -6,7 +6,7 @@
   "description": "A small shell and a very lightweight JavaScript library meant to convert Operating System commands to functions.",
   "main": "index.js",
   "bin": {
-    "bssh": "./repl.js"
+    "bashscript": "./bashscript.js"
   },
   "scripts": {
     "bork": "git add .; git commit -m 'New Release'; git push; npm publish; git push;",
