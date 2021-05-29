@@ -12,6 +12,7 @@ npm i -g bashscript # for the cmdsh REPL shell
 
 ```JavaScript
 import { cmd, exe } from './index.js';
+const { echo } = cmd;
 const result = await exe( echo("Meow!") );
 assert.equal(result, "Meow!");
 ```
