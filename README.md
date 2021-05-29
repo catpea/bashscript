@@ -26,6 +26,34 @@ Promise { <pending> }
 
 ```
 
+### Advanced REPL
+
+```JavaScript
+
+> const command = cmd.echo('Foo');
+undefined
+
+> command
+Shell {}
+
+> await command.value();
+'Foo'
+
+> command.result
+{
+  command: 'echo Foo',
+  exitCode: 0,
+  stdout: 'Foo',
+  stderr: '',
+  all: undefined,
+  failed: false,
+  timedOut: false,
+  isCanceled: false,
+  killed: false
+}
+
+```
+
 ## Usage
 
 ```JavaScript
