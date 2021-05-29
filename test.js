@@ -15,23 +15,29 @@ const debug = bug('tests');
 assert.equal(identify(new Util()), "Util", "identify.js is broken, because identiofication misidentified the thing.");
 //assert.equal(identify(cast({}, Util) ), "Util", "cast.js is broken, becasue casting returned unexpected type.");
 
-import { cmd } from './index.js';
-const { pipeline, cat, printf, dirname, readlink, which, grep, head, echo, tr } = cmd;
+import { bs } from './index.js';
+const { pipeline, cat, printf, dirname, readlink, which, grep, head, echo, tr } = bs;
 
 {
-  const result = await echo("Meow!").value();
+  //import { bs } from './index.js';
+  //const { pipeline, cat, echo, tr, grep } = bs;
+  const result = await bs.echo("Meow!").value();
   debug(result);
   assert.equal(result, "Meow!");
 }
 
 {
-  const result = await pipeline(cat( printf("%s", dirname(readlink('-f', which('npm'))),"/../package.json" )), grep('name'), head('-n', 1) ).value();
-  debug(result);
-  assert.equal(result, '  "name": "npm",')
-}
-
-{
+  //import { bs } from './index.js';
+  //const { pipeline, cat, echo, tr, grep } = bs;
   const result = await pipeline(cat(echo('package.json')),tr( '"[a-z]"', '"[A-Z]"'), grep('NAME') ).value();
   debug(result);
   assert.equal(result, '  "NAME": "BASHSCRIPT",')
+}
+
+{
+  //import { bs } from './index.js';
+  //const { pipeline, cat, printf, dirname, readlink, which, grep, head } = bs;
+  const result = await pipeline(cat( printf("%s", dirname(readlink('-f', which('npm'))),"/../package.json" )), grep('name'), head('-n', 1) ).value();
+  debug(result);
+  assert.equal(result, '  "name": "npm",')
 }
