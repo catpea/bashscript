@@ -1,5 +1,5 @@
 # bashscript
-A small REPL shell, and a very lightweight JavaScript library meant to convert Operating System commands to functions.
+A small and minimalist REPL shell, and a very lightweight JavaScript library meant to convert Operating System commands to functions. 
 
 ## TLDR
 
