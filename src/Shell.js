@@ -14,9 +14,11 @@ class Shell extends Node {
   }
 
   async value(){
+    if(this.#result) return this.#result.stdout;
     try {
       const commandName = this.name;
       invariant(commandName, 'Command name is required')
+      // this.#result = await execa(this.commandName, await this.argumentVector);
       const argumentVector = await Promise.all( this.children.map(node=>node.value() /* returns a promise */) );
       debug(`Executing Command: ${commandName} ${argumentVector.join(" ")};`);
       this.#result = await execa(commandName, argumentVector);

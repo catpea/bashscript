@@ -11,6 +11,7 @@ class Pipe extends Node {
     super(nodeName, childNodes);
   }
   async value(){
+    if(this.#result) return this.#result;
     /*
       NOTE:
       This must return dcp.spawn streams.
@@ -20,6 +21,8 @@ class Pipe extends Node {
     const self = this;
     return new Promise(async function(resolve, reject) {
       try {
+        //        self.#result = dcp.spawn(self.commandName, await self.argumentVector); // only commands in a line have a .pipe
+
         const resolvedArray = await Promise.all( self.children.map(node=>node.value() /* returns a promise */) );
         debug(`Creating Pipe: ${self.name} ${resolvedArray.join(" ")}`);
         self.#result = dcp.spawn(self.name, resolvedArray); // only commands in a line have a .pipe

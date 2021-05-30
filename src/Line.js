@@ -7,10 +7,12 @@ import Node from './Node.js';
 import Pipe from './Pipe.js';
 
 class Line extends Node {
+  #result = null;
   constructor(nodeName, childNodes) {
     super(nodeName, childNodes.map(node=>cast(node, Pipe)));
   }
   async value(){
+    if(this.#result) return this.#result;
     const self = this;
     return new Promise(async function(resolve, reject) {
         try {
@@ -19,7 +21,8 @@ class Line extends Node {
           pipeline( ...streams, new PassThrough(), (err) => { if (err) throw err } )
           .on("error", function (error) { reject(`Pipeline failue, ${error.message}`); })
           .once("readable", function () {
-            resolve( this.read().toString().replace(/\n$/,'') ) // execa strips its own, but we have to strip it here as well.
+            self.#result = this.read().toString().replace(/\n$/,'');
+            resolve( self.#result ) // execa strips its own, but we have to strip it here as well.
           });
         } catch (error) {
           reject(`Pipeline failue, ${error.message}`);
