@@ -1,5 +1,5 @@
 # bashscript
-A small and minimalist REPL shell, and a very lightweight JavaScript library meant to convert Operating System commands to functions. 
+A small and minimalist REPL shell, and a very lightweight JavaScript library meant to convert Operating System commands to functions.
 
 ## TLDR
 
@@ -73,6 +73,12 @@ assert.equal(result, "Meow!");
 ```JavaScript
 import { cmd } from 'bashscript';
 const result = await cmd.echo("Meow!").value();
+assert.equal(result, "Meow!");
+```
+
+```JavaScript
+import { cmd } from 'bashscript';
+const result = await cmd.echo("Meow!").exe;
 assert.equal(result, "Meow!");
 ```
 
