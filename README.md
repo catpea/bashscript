@@ -136,7 +136,15 @@ const { montage } = cmd;
 const files = ['a.png', 'b.png', 'c.png'];
 const tile = 2;
 const filePath = '/tmp/test.jpg';
-const command = montage({'-background': '"#212529"'}, ...files, {'-geometry': '320x230', '-tile':`${tile}x`}, filePath);
+const command = montage(
+  {'-background': '"#212529"'},
+  ...files,
+  {
+    '-geometry': '320x230',
+    '-tile':`${tile}x`
+  },
+  filePath
+);
 
 console.log(await command.string);
 // await command.exe; // to execute;
