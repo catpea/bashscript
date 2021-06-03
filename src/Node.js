@@ -48,7 +48,7 @@ class Node extends Util {
     invariant(supportedType, `Unsupported/Unsafe Child Node Type: ${typeof node}`);
 
     // Set parent
-    this.#parentNode = this;
+    node.parent = this;
 
     // Add node to children.
     this.#childNodes.push(node);
@@ -74,7 +74,7 @@ class Node extends Util {
   set name(name){this.#nodeName = name;}
 
   get parent(){return this.#parentNode;}
-  // No setter; read-only property
+  set parent(node){this.#parentNode = node;}
 
   get text(){return this.#textContent;}
   set text(text){this.#textContent = text;}
